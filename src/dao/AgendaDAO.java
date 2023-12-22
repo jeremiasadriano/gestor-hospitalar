@@ -32,6 +32,7 @@ public class AgendaDAO implements CrudInterface<AgendaDTO> {
         this.pacientesList = new ArrayList<>();
     }
 //    REGISTAR = CREATE
+
     @Override
     public boolean registrar(AgendaDTO dadosRegistro) throws ClassNotFoundException, SQLException {
         sql = "insert into Agenda_TABLE (nome, sobrenome, telefone, data, genero, data_nascimento, endereco, provincia,atendido,numeroId,experiencia,email,planoSaude)values (?,?,?,?,?,?,?,?,?,?,?,?,?);";
@@ -57,11 +58,13 @@ public class AgendaDAO implements CrudInterface<AgendaDTO> {
         return true;
     }
 // LOGIN = READ
+
     @Override
     public boolean login(AgendaDTO dadosLogin) throws ClassNotFoundException, SQLException {
         return false;
     }
 // LOGIN = READ
+
     @Override
     public AgendaDTO verPerfil(int dadosPerfil) throws ClassNotFoundException, SQLException {
 
@@ -90,6 +93,7 @@ public class AgendaDAO implements CrudInterface<AgendaDTO> {
         return objAgendaDTO;
     }
 //Editar = update
+
     @Override
     public boolean editarPerfil(int id, AgendaDTO dadosEditar) throws ClassNotFoundException, SQLException {
         sql = "update Agenda_TABLE set nome=?, sobrenome=?, telefone=?, data=?, genero=?, data_nascimento=?, endereco=?, provincia=?,atendido=?,numeroId=?,experiencia=?,email=?,planoSaude=?where id=?;";
@@ -114,6 +118,7 @@ public class AgendaDAO implements CrudInterface<AgendaDTO> {
         return true;
     }
 // verTodos = READ
+
     @Override
     public List<AgendaDTO> verTodos() throws ClassNotFoundException, SQLException {
         sql = "SELECT * FROM Agenda_TABLE";
@@ -143,6 +148,7 @@ public class AgendaDAO implements CrudInterface<AgendaDTO> {
         return pacientesList;
     }
 //apagarPerfil = DELETE 
+
     @Override
     public void apagarPerfil(int dadosApagar) throws ClassNotFoundException, SQLException {
         sql = "DELETE FROM Agenda_TABLE WHERE id=?";
@@ -151,8 +157,7 @@ public class AgendaDAO implements CrudInterface<AgendaDTO> {
         prSet.setInt(1, dadosApagar);
         prSet.execute();
     }
-    
+
 //    CRUD
 //    CREATE READ UPDATE DELETE
-
 }

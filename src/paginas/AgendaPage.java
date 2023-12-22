@@ -107,12 +107,9 @@ public class AgendaPage extends JFrame {
                 RegistroVacina.setForeground(Color.WHITE);
             }
         });
-        RegistroVacina.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                new PacientesVaciandosPage();
-                dispose();
-            }
+        RegistroVacina.addActionListener((actionEvent) -> {
+            new PacientesVaciandosPage();
+            dispose();
         });
 
         ConsultasNut = new JButton("Marcar Consultas Nutricionais");
@@ -136,12 +133,10 @@ public class AgendaPage extends JFrame {
                 ConsultasNut.setForeground(Color.WHITE);
             }
         });
-        ConsultasNut.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                new ConsultasPage();
-                dispose();
-            }
+        ConsultasNut.addActionListener((actionEvent) -> {
+            new ConsultasPage();
+            dispose();
+
         });
 
         AgendaEx = new JButton("Agendamento de exame");
@@ -200,12 +195,9 @@ public class AgendaPage extends JFrame {
         logou.setBackground(new Color(40, 53, 63, 236));
         logou.setBorder(null);
         leftScreen.add(logou);
-        logou.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                new LoginPage();
-                dispose();
-            }
+        logou.addActionListener((action) -> {
+            new LoginPage();
+            dispose();
         });
     }
 
