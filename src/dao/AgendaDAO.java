@@ -31,8 +31,6 @@ public class AgendaDAO implements CrudInterface<AgendaEntity> {
         this.rSet = null;
         this.pacientesList = new ArrayList<>();
     }
-//    REGISTAR = CREATE
-
     @Override
     public boolean registrar(AgendaEntity dadosRegistro) throws ClassNotFoundException, SQLException {
         sql = "insert into Agenda_TABLE (nome, sobrenome, telefone, data, genero, data_nascimento, endereco, provincia,atendido,numeroId,experiencia,email,planoSaude)values (?,?,?,?,?,?,?,?,?,?,?,?,?);";
@@ -57,13 +55,11 @@ public class AgendaDAO implements CrudInterface<AgendaEntity> {
         CONEXAODB.close();
         return true;
     }
-// LOGIN = READ
 
     @Override
     public boolean login(AgendaEntity dadosLogin) throws ClassNotFoundException, SQLException {
         return false;
     }
-// LOGIN = READ
 
     @Override
     public AgendaEntity verPerfil(int dadosPerfil) throws ClassNotFoundException, SQLException {
@@ -92,7 +88,6 @@ public class AgendaDAO implements CrudInterface<AgendaEntity> {
         }
         return objAgendaDTO;
     }
-//Editar = update
 
     @Override
     public boolean editarPerfil(int id, AgendaEntity dadosEditar) throws ClassNotFoundException, SQLException {
@@ -117,7 +112,6 @@ public class AgendaDAO implements CrudInterface<AgendaEntity> {
         prSet.execute();
         return true;
     }
-// verTodos = READ
 
     @Override
     public List<AgendaEntity> verTodos() throws ClassNotFoundException, SQLException {
@@ -147,7 +141,6 @@ public class AgendaDAO implements CrudInterface<AgendaEntity> {
         }
         return pacientesList;
     }
-//apagarPerfil = DELETE 
 
     @Override
     public void apagarPerfil(int dadosApagar) throws ClassNotFoundException, SQLException {
@@ -157,7 +150,4 @@ public class AgendaDAO implements CrudInterface<AgendaEntity> {
         prSet.setInt(1, dadosApagar);
         prSet.execute();
     }
-
-//    CRUD
-//    CREATE READ UPDATE DELETE
 }
