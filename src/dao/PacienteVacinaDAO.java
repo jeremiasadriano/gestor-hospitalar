@@ -5,7 +5,7 @@
 package dao;
 
 import conexaoDB.Conexao;
-import dto.PacienteVacinaDTO;
+import entity.PacienteVacinaEntity;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,13 +17,13 @@ import java.util.List;
  *
  * @author godal
  */
-public class PacienteVacinaDAO implements CrudInterface<PacienteVacinaDTO> {
+public class PacienteVacinaDAO implements CrudInterface<PacienteVacinaEntity> {
 
     private final Connection CONEXAODB;
     private PreparedStatement prSet;
     private ResultSet rSet;
     private String sql;
-    private List<PacienteVacinaDTO> pacientesList;
+    private List<PacienteVacinaEntity> pacientesList;
 
     public PacienteVacinaDAO() throws ClassNotFoundException, SQLException {
         this.CONEXAODB = Conexao.conexao();
@@ -33,7 +33,7 @@ public class PacienteVacinaDAO implements CrudInterface<PacienteVacinaDTO> {
     }
 
     @Override
-    public boolean registrar(PacienteVacinaDTO dadosRegistro) throws ClassNotFoundException, SQLException {
+    public boolean registrar(PacienteVacinaEntity dadosRegistro) throws ClassNotFoundException, SQLException {
         sql = "insert into Vacinacao_TABLE (nome_pac, sobrenome_pac, identificao_pac, dataNascimento_pac, genero_pac, email_pac,provincia_pac, planoSaude_pac, numeroPlano_pac, endereco,telefone_pac)values (?,?,?,?,?,?,?,?,?,?,?);";
 
         prSet = CONEXAODB.prepareStatement(sql);
@@ -56,13 +56,13 @@ public class PacienteVacinaDAO implements CrudInterface<PacienteVacinaDTO> {
     }
 
     @Override
-    public boolean login(PacienteVacinaDTO dadosLogin) throws ClassNotFoundException, SQLException {
+    public boolean login(PacienteVacinaEntity dadosLogin) throws ClassNotFoundException, SQLException {
        return false;
     }
 
     @Override
-    public PacienteVacinaDTO verPerfil(int dadosPerfil) throws ClassNotFoundException, SQLException {
-        PacienteVacinaDTO objPacienteVacinaDTO = new PacienteVacinaDTO();
+    public PacienteVacinaEntity verPerfil(int dadosPerfil) throws ClassNotFoundException, SQLException {
+        PacienteVacinaEntity objPacienteVacinaDTO = new PacienteVacinaEntity();
         sql = "SELECT * FROM Vacinacao_TABLE WHERE id=?;";
         prSet = CONEXAODB.prepareStatement(sql);
         prSet.setInt(1, dadosPerfil);
@@ -87,7 +87,7 @@ public class PacienteVacinaDAO implements CrudInterface<PacienteVacinaDTO> {
 
 
     @Override
-    public boolean editarPerfil(int id, PacienteVacinaDTO dadosEditar) throws ClassNotFoundException, SQLException {
+    public boolean editarPerfil(int id, PacienteVacinaEntity dadosEditar) throws ClassNotFoundException, SQLException {
         sql = "update Vacinacao_TABLE set nome_pac=?, sobrenome_pac=?, identificao_pac=?, dataNascimento_pac=?, genero_pac=?, email_pac=?,provincia_pac=?, planoSaude_pac=?, numeroPlano_pac=?, endereco=?,telefone_pac=? where id=?;";
         prSet = this.CONEXAODB.prepareStatement(sql);
 
@@ -109,14 +109,14 @@ public class PacienteVacinaDAO implements CrudInterface<PacienteVacinaDTO> {
     }
 
     @Override
-    public List<PacienteVacinaDTO> verTodos() throws ClassNotFoundException, SQLException {
+    public List<PacienteVacinaEntity> verTodos() throws ClassNotFoundException, SQLException {
         sql = "SELECT * FROM Vacinacao_TABLE";
 
         prSet = CONEXAODB.prepareStatement(sql);
         rSet = prSet.executeQuery();
 
         while (rSet.next()) {
-            PacienteVacinaDTO objPacienteVacinaDTO = new PacienteVacinaDTO();
+            PacienteVacinaEntity objPacienteVacinaDTO = new PacienteVacinaEntity();
 
             objPacienteVacinaDTO.setId(rSet.getInt(1));
             objPacienteVacinaDTO.setNome(rSet.getString(2));

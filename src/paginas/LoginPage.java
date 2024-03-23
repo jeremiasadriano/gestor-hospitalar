@@ -8,7 +8,7 @@ package paginas;
  * @author godalway
  */
 import dao.FuncionarioDAO;
-import dto.FuncionarioDTO;
+import entity.FuncionarioEntity;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -134,7 +134,7 @@ public class LoginPage extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
 
                 try {
-                    FuncionarioDTO objFuncionarioDTO = new FuncionarioDTO();
+                    FuncionarioEntity objFuncionarioDTO = new FuncionarioEntity();
                     objFuncionarioDTO.setNomeFunc(username.getText());
                     objFuncionarioDTO.setSenhaFunc(password.getText());
 

@@ -5,7 +5,7 @@
 package paginas.paginasAdicionais;
 
 import dao.PacienteVacinaDAO;
-import dto.PacienteVacinaDTO;
+import entity.PacienteVacinaEntity;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -325,7 +325,7 @@ public class EditarPacientePage extends JFrame {
 
     public void preencherCampos(int id) {
         this.id = id;
-        PacienteVacinaDTO objPacienteVacinaDTO;
+        PacienteVacinaEntity objPacienteVacinaDTO;
         try {
             objPacienteVacinaDTO = new PacienteVacinaDAO().verPerfil(id);
             nome.setText(objPacienteVacinaDTO.getNome());
@@ -388,7 +388,7 @@ public class EditarPacientePage extends JFrame {
 
     public void atualizar() {
         try {
-            PacienteVacinaDTO objPacienteVacinaDTO = new PacienteVacinaDTO();
+            PacienteVacinaEntity objPacienteVacinaDTO = new PacienteVacinaEntity();
 
             objPacienteVacinaDTO.setNome(nome.getText());
             objPacienteVacinaDTO.setSobrenome(sobrenome.getText());

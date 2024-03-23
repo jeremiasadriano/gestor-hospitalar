@@ -5,7 +5,7 @@
 package paginas.paginasAdicionais;
 
 import dao.ConsultasDAO;
-import dto.ConsultasDTO;
+import entity.ConsultasEntity;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -339,7 +339,7 @@ public class EditarConsultasPage extends JFrame {
     public void preencherCampos(int id) {
         this.id = id;
         try {
-            ConsultasDTO objConsultasDTO = new ConsultasDAO().verPerfil(id);
+            ConsultasEntity objConsultasDTO = new ConsultasDAO().verPerfil(id);
             NomeCompleto.setText(objConsultasDTO.getNome());
             Sobrenome.setText(objConsultasDTO.getSobrenome());
             emai.setText(objConsultasDTO.getEmail());
@@ -369,7 +369,7 @@ public class EditarConsultasPage extends JFrame {
 
     private void atualizar() {
         try {
-            ConsultasDTO objConsultasDTO = new ConsultasDTO();
+            ConsultasEntity objConsultasDTO = new ConsultasEntity();
 
             objConsultasDTO.setNome(NomeCompleto.getText());
             objConsultasDTO.setSobrenome(Sobrenome.getText());

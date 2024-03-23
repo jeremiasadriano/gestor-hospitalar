@@ -5,7 +5,7 @@
 package dao;
 
 import conexaoDB.Conexao;
-import dto.AgendaDTO;
+import entity.AgendaEntity;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,13 +17,13 @@ import java.util.List;
  *
  * @author godal
  */
-public class AgendaDAO implements CrudInterface<AgendaDTO> {
+public class AgendaDAO implements CrudInterface<AgendaEntity> {
 
     private final Connection CONEXAODB;
     private PreparedStatement prSet;
     private ResultSet rSet;
     private String sql;
-    private List<AgendaDTO> pacientesList;
+    private List<AgendaEntity> pacientesList;
 
     public AgendaDAO() throws ClassNotFoundException, SQLException {
         this.CONEXAODB = Conexao.conexao();
@@ -34,7 +34,7 @@ public class AgendaDAO implements CrudInterface<AgendaDTO> {
 //    REGISTAR = CREATE
 
     @Override
-    public boolean registrar(AgendaDTO dadosRegistro) throws ClassNotFoundException, SQLException {
+    public boolean registrar(AgendaEntity dadosRegistro) throws ClassNotFoundException, SQLException {
         sql = "insert into Agenda_TABLE (nome, sobrenome, telefone, data, genero, data_nascimento, endereco, provincia,atendido,numeroId,experiencia,email,planoSaude)values (?,?,?,?,?,?,?,?,?,?,?,?,?);";
 
         prSet = CONEXAODB.prepareStatement(sql);
@@ -43,7 +43,7 @@ public class AgendaDAO implements CrudInterface<AgendaDTO> {
         prSet.setString(3, dadosRegistro.getTelefone());
         prSet.setString(4, dadosRegistro.getDataConsulta());
         prSet.setString(5, dadosRegistro.getGenero());
-        prSet.setString(6, dadosRegistro.getData_nascimento());
+        prSet.setString(6, dadosRegistro.getDataNascimento());
         prSet.setString(7, dadosRegistro.getEndereco());
         prSet.setString(8, dadosRegistro.getProvincia());
         prSet.setString(9, dadosRegistro.getAtendimentoCheckBox());
@@ -60,16 +60,16 @@ public class AgendaDAO implements CrudInterface<AgendaDTO> {
 // LOGIN = READ
 
     @Override
-    public boolean login(AgendaDTO dadosLogin) throws ClassNotFoundException, SQLException {
+    public boolean login(AgendaEntity dadosLogin) throws ClassNotFoundException, SQLException {
         return false;
     }
 // LOGIN = READ
 
     @Override
-    public AgendaDTO verPerfil(int dadosPerfil) throws ClassNotFoundException, SQLException {
+    public AgendaEntity verPerfil(int dadosPerfil) throws ClassNotFoundException, SQLException {
 
         sql = "SELECT * FROM Agenda_TABLE WHERE id=?;";
-        AgendaDTO objAgendaDTO = new AgendaDTO();
+        AgendaEntity objAgendaDTO = new AgendaEntity();
         prSet = CONEXAODB.prepareStatement(sql);
         prSet.setInt(1, dadosPerfil);
 
@@ -82,7 +82,7 @@ public class AgendaDAO implements CrudInterface<AgendaDTO> {
             objAgendaDTO.setAtendimentoCheckBox(rSet.getString("atendido"));
             objAgendaDTO.setFeedBackAtendimento(rSet.getString("experiencia"));
             objAgendaDTO.setGenero(rSet.getString("genero"));
-            objAgendaDTO.setData_nascimento(rSet.getString("data_nascimento"));
+            objAgendaDTO.setDataNascimento(rSet.getString("data_nascimento"));
             objAgendaDTO.setEndereco(rSet.getString("endereco"));
             objAgendaDTO.setDataConsulta(rSet.getString("data"));
             objAgendaDTO.setProvincia(rSet.getString("provincia"));
@@ -95,7 +95,7 @@ public class AgendaDAO implements CrudInterface<AgendaDTO> {
 //Editar = update
 
     @Override
-    public boolean editarPerfil(int id, AgendaDTO dadosEditar) throws ClassNotFoundException, SQLException {
+    public boolean editarPerfil(int id, AgendaEntity dadosEditar) throws ClassNotFoundException, SQLException {
         sql = "update Agenda_TABLE set nome=?, sobrenome=?, telefone=?, data=?, genero=?, data_nascimento=?, endereco=?, provincia=?,atendido=?,numeroId=?,experiencia=?,email=?,planoSaude=?where id=?;";
         prSet = this.CONEXAODB.prepareStatement(sql);
 
@@ -105,7 +105,7 @@ public class AgendaDAO implements CrudInterface<AgendaDTO> {
         prSet.setString(3, dadosEditar.getTelefone());
         prSet.setString(4, dadosEditar.getDataConsulta());
         prSet.setString(5, dadosEditar.getGenero());
-        prSet.setString(6, dadosEditar.getData_nascimento());
+        prSet.setString(6, dadosEditar.getDataNascimento());
         prSet.setString(7, dadosEditar.getEndereco());
         prSet.setString(8, dadosEditar.getProvincia());
         prSet.setString(9, dadosEditar.getAtendimentoCheckBox());
@@ -120,14 +120,14 @@ public class AgendaDAO implements CrudInterface<AgendaDTO> {
 // verTodos = READ
 
     @Override
-    public List<AgendaDTO> verTodos() throws ClassNotFoundException, SQLException {
+    public List<AgendaEntity> verTodos() throws ClassNotFoundException, SQLException {
         sql = "SELECT * FROM Agenda_TABLE";
 
         prSet = CONEXAODB.prepareStatement(sql);
         rSet = prSet.executeQuery();
 
         while (rSet.next()) {
-            AgendaDTO objAgendaDTO = new AgendaDTO();
+            AgendaEntity objAgendaDTO = new AgendaEntity();
             objAgendaDTO.setId(rSet.getInt("id"));
             objAgendaDTO.setNome(rSet.getString("nome"));
             objAgendaDTO.setSobrenome(rSet.getString("sobrenome"));
@@ -135,7 +135,7 @@ public class AgendaDAO implements CrudInterface<AgendaDTO> {
             objAgendaDTO.setAtendimentoCheckBox(rSet.getString("atendido"));
             objAgendaDTO.setFeedBackAtendimento(rSet.getString("experiencia"));
             objAgendaDTO.setGenero(rSet.getString("genero"));
-            objAgendaDTO.setData_nascimento(rSet.getString("data_nascimento"));
+            objAgendaDTO.setDataNascimento(rSet.getString("data_nascimento"));
             objAgendaDTO.setEndereco(rSet.getString("endereco"));
             objAgendaDTO.setDataConsulta(rSet.getString("data"));
             objAgendaDTO.setProvincia(rSet.getString("provincia"));

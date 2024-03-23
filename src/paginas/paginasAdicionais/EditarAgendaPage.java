@@ -5,7 +5,7 @@
 package paginas.paginasAdicionais;
 
 import dao.AgendaDAO;
-import dto.AgendaDTO;
+import entity.AgendaEntity;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -373,12 +373,12 @@ public class EditarAgendaPage extends JFrame {
     public void preencherCampos(int id) {
         this.id = id;
         try {
-            AgendaDTO objAgendaDTO = new AgendaDAO().verPerfil(id);
+            AgendaEntity objAgendaDTO = new AgendaDAO().verPerfil(id);
 
             NomeCompleto.setText(objAgendaDTO.getNome());
             Sobrenome.setText(objAgendaDTO.getSobrenome());
             Number.setText(objAgendaDTO.getTelefone());
-            Date.setText(objAgendaDTO.getData_nascimento());
+            Date.setText(objAgendaDTO.getDataNascimento());
             emai.setText(objAgendaDTO.getEmail());
             enderecoField.setText(objAgendaDTO.getEndereco());
             Plano.setText(objAgendaDTO.getPlanoSaude());
@@ -445,12 +445,12 @@ public class EditarAgendaPage extends JFrame {
     }
 
     public void atualiar() {
-        AgendaDTO objAgendaDTO = new AgendaDTO();
+        AgendaEntity objAgendaDTO = new AgendaEntity();
 
         objAgendaDTO.setNome(NomeCompleto.getText());
         objAgendaDTO.setSobrenome(Sobrenome.getText());
         objAgendaDTO.setTelefone(Number.getText());
-        objAgendaDTO.setData_nascimento(Date.getText());
+        objAgendaDTO.setDataNascimento(Date.getText());
         objAgendaDTO.setEmail(emai.getText());
         objAgendaDTO.setEndereco(enderecoField.getText());
         objAgendaDTO.setPlanoSaude(Plano.getText());

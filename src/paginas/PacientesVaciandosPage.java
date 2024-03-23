@@ -8,7 +8,7 @@ package paginas;
  * @author godalway
  */
 import dao.PacienteVacinaDAO;
-import dto.PacienteVacinaDTO;
+import entity.PacienteVacinaEntity;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -478,7 +478,7 @@ public class PacientesVaciandosPage extends JFrame {
 
     private void registrar() {
         try {
-            PacienteVacinaDTO objPacienteVacinaDTO = new PacienteVacinaDTO();
+            PacienteVacinaEntity objPacienteVacinaDTO = new PacienteVacinaEntity();
 
             objPacienteVacinaDTO.setNome(nome.getText());
             objPacienteVacinaDTO.setSobrenome(sobrenome.getText());

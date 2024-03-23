@@ -8,7 +8,7 @@ package paginas;
  * @author godalway
  */
 import dao.ConsultasDAO;
-import dto.ConsultasDTO;
+import entity.ConsultasEntity;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -502,32 +502,34 @@ public class ConsultasPage extends JFrame {
 
     private void registrar() {
         try {
-            ConsultasDTO objConsultasDTO = new ConsultasDTO();
+            ConsultasEntity consultasEntity = new ConsultasEntity();
 
-            objConsultasDTO.setNome(NomeCompleto.getText());
-            objConsultasDTO.setSobrenome(Sobrenome.getText());
-            objConsultasDTO.setEmail(emai.getText());
-            objConsultasDTO.setData(BIF.getText());
-            objConsultasDTO.setPeso(Double.parseDouble(pes.getText()));
-            objConsultasDTO.setAltura(Double.parseDouble(altur.getText()));
-            objConsultasDTO.setIdade(Integer.parseInt(idad.getText()));
-            objConsultasDTO.setMetas(texto.getText());
+            
+            
+            consultasEntity.setNome(NomeCompleto.getText());
+            consultasEntity.setSobrenome(Sobrenome.getText());
+            consultasEntity.setEmail(emai.getText());
+            consultasEntity.setData(BIF.getText());
+            consultasEntity.setPeso(Double.parseDouble(pes.getText()));
+            consultasEntity.setAltura(Double.parseDouble(altur.getText()));
+            consultasEntity.setIdade(Integer.parseInt(idad.getText()));
+            consultasEntity.setMetas(texto.getText());
 
             if (PerdaPeso.isSelected()) {
-                objConsultasDTO.setObjetivos("Perder Peso");
+                consultasEntity.setObjetivos("Perder Peso");
             } else if (GanhoMus.isSelected()) {
-                objConsultasDTO.setObjetivos("Ganhar Musculos");
+                consultasEntity.setObjetivos("Ganhar Musculos");
             } else if (GanhoFor.isSelected()) {
-                objConsultasDTO.setObjetivos("Ganhar Força");
+                consultasEntity.setObjetivos("Ganhar Força");
             } else if (Desempenho.isSelected()) {
-                objConsultasDTO.setObjetivos("Desempenho atlético");
+                consultasEntity.setObjetivos("Desempenho atlético");
             } else {
-                objConsultasDTO.setObjetivos(other.getText());
+                consultasEntity.setObjetivos(other.getText());
             }
 
             ConsultasDAO objConsultasDAO = new ConsultasDAO();
 
-            if (objConsultasDAO.registrar(objConsultasDTO)) {
+            if (objConsultasDAO.registrar(consultasEntity)) {
                 JOptionPane.showMessageDialog(null, "Consulta adicionado com sucesso", "Adição de Consulta", JOptionPane.INFORMATION_MESSAGE);
             }
 

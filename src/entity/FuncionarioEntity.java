@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dto;
+package entity;
 
 /**
  *
  * @author godal
  */
-public class FuncionarioDTO {
+public class FuncionarioEntity {
 
     private String nomeFunc, senhaFunc, emailFunc;
     private int idadeFunc, idFunc;
 
-    public FuncionarioDTO() {
+    public FuncionarioEntity() {
     }
 
     public String getNomeFunc() {

@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class Conexao {
 
     public static Connection conexao() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");//RESPONSAVEL POR IDENTIFICAR O DRIVER DO MYSQL
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/GESTAO_HOSPITALAR_DB", "root", "Jeremias1");
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/GESTAO_HOSPITALAR_DB", "root", "root");
     }
 }

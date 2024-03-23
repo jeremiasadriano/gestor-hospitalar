@@ -5,7 +5,7 @@
 package dao;
 
 import conexaoDB.Conexao;
-import dto.FuncionarioDTO;
+import entity.FuncionarioEntity;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import paginas.PacientesVaciandosPage;
  *
  * @author godal
  */
-public class FuncionarioDAO implements CrudInterface<FuncionarioDTO> {
+public class FuncionarioDAO implements CrudInterface<FuncionarioEntity> {
 
     private final Connection CONEXAODB;
     private final List FUNCIONARIOLIST;
@@ -26,18 +26,18 @@ public class FuncionarioDAO implements CrudInterface<FuncionarioDTO> {
 
     public FuncionarioDAO() throws ClassNotFoundException, SQLException {
         this.CONEXAODB = Conexao.conexao();
-        this.FUNCIONARIOLIST = new ArrayList<FuncionarioDTO>();
+        this.FUNCIONARIOLIST = new ArrayList<FuncionarioEntity>();
         this.prSet = null;
         this.rSet = null;
     }
 
     @Override
-    public boolean registrar(FuncionarioDTO dadosRegistro) throws ClassNotFoundException, SQLException {
+    public boolean registrar(FuncionarioEntity dadosRegistro) throws ClassNotFoundException, SQLException {
         return true;
     }
 
     @Override
-    public boolean login(FuncionarioDTO dadosLogin) throws ClassNotFoundException, SQLException {
+    public boolean login(FuncionarioEntity dadosLogin) throws ClassNotFoundException, SQLException {
         sql = "SELECT * FROM Funcionario_TABLE WHERE nome_func=? AND senha_func=?;";
         prSet = CONEXAODB.prepareStatement(sql);
 
@@ -58,17 +58,17 @@ public class FuncionarioDAO implements CrudInterface<FuncionarioDTO> {
     }
 
     @Override
-    public FuncionarioDTO verPerfil(int dadosPerfil) throws ClassNotFoundException, SQLException {
+    public FuncionarioEntity verPerfil(int dadosPerfil) throws ClassNotFoundException, SQLException {
         return null;
     }
 
     @Override
-    public boolean editarPerfil(int id, FuncionarioDTO dadosEditar) throws ClassNotFoundException, SQLException {
+    public boolean editarPerfil(int id, FuncionarioEntity dadosEditar) throws ClassNotFoundException, SQLException {
         return false;
     }
 
     @Override
-    public List<FuncionarioDTO> verTodos() throws ClassNotFoundException, SQLException {
+    public List<FuncionarioEntity> verTodos() throws ClassNotFoundException, SQLException {
         return null;
     }
 

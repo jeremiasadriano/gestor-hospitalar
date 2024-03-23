@@ -5,7 +5,7 @@
 package dao;
 
 import conexaoDB.Conexao;
-import dto.ConsultasDTO;
+import entity.ConsultasEntity;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,13 +17,13 @@ import java.util.List;
  *
  * @author godal
  */
-public class ConsultasDAO implements CrudInterface<ConsultasDTO> {
+public class ConsultasDAO implements CrudInterface<ConsultasEntity> {
 
     private final Connection CONEXAODB;
     private PreparedStatement prSet;
     private ResultSet rSet;
     private String sql;
-    private List<ConsultasDTO> pacientesList;
+    private List<ConsultasEntity> pacientesList;
 
     public ConsultasDAO() throws ClassNotFoundException, SQLException {
         this.CONEXAODB = Conexao.conexao();
@@ -33,7 +33,7 @@ public class ConsultasDAO implements CrudInterface<ConsultasDTO> {
     }
 
     @Override
-    public boolean registrar(ConsultasDTO dadosRegistro) throws ClassNotFoundException, SQLException {
+    public boolean registrar(ConsultasEntity dadosRegistro) throws ClassNotFoundException, SQLException {
         sql = "insert into Consultas_TABLE (nome, sobrenome, email, peso, idade, metas, objetivos, altura,dataC)values (?,?,?,?,?,?,?,?,?);";
 
         prSet = CONEXAODB.prepareStatement(sql);
@@ -54,13 +54,13 @@ public class ConsultasDAO implements CrudInterface<ConsultasDTO> {
     }
 
     @Override
-    public boolean login(ConsultasDTO dadosLogin) throws ClassNotFoundException, SQLException {
+    public boolean login(ConsultasEntity dadosLogin) throws ClassNotFoundException, SQLException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public ConsultasDTO verPerfil(int dadosPerfil) throws ClassNotFoundException, SQLException {
-        ConsultasDTO objConsultasDTO = new ConsultasDTO();
+    public ConsultasEntity verPerfil(int dadosPerfil) throws ClassNotFoundException, SQLException {
+        ConsultasEntity objConsultasDTO = new ConsultasEntity();
         sql = "SELECT * FROM Consultas_TABLE WHERE id=?;";
         prSet = CONEXAODB.prepareStatement(sql);
         prSet.setInt(1, dadosPerfil);
@@ -82,7 +82,7 @@ public class ConsultasDAO implements CrudInterface<ConsultasDTO> {
     }
 
     @Override
-    public boolean editarPerfil(int id, ConsultasDTO dadosEditar) throws ClassNotFoundException, SQLException {
+    public boolean editarPerfil(int id, ConsultasEntity dadosEditar) throws ClassNotFoundException, SQLException {
         sql = "update Consultas_TABLE set nome=?, sobrenome=?, email=?, peso=?, idade=?, metas=?, objetivos=?, altura=?,dataC=? where id=?;";
         prSet = this.CONEXAODB.prepareStatement(sql);
 
@@ -102,14 +102,14 @@ public class ConsultasDAO implements CrudInterface<ConsultasDTO> {
     }
 
     @Override
-    public List<ConsultasDTO> verTodos() throws ClassNotFoundException, SQLException {
+    public List<ConsultasEntity> verTodos() throws ClassNotFoundException, SQLException {
         sql = "SELECT * FROM Consultas_TABLE";
 
         prSet = CONEXAODB.prepareStatement(sql);
         rSet = prSet.executeQuery();
 
         while (rSet.next()) {
-            ConsultasDTO objConsultasDTO = new ConsultasDTO();
+            ConsultasEntity objConsultasDTO = new ConsultasEntity();
 
             objConsultasDTO.setId(rSet.getInt("id"));
             objConsultasDTO.setNome(rSet.getString("nome"));

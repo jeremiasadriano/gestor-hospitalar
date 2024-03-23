@@ -2,19 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dto;
+package entity;
 
 /**
  *
  * @author godal
  */
-public class ConsultasDTO {
+public class ConsultasEntity {
 
     private String data, nome, sobrenome, email, metas, objetivos;
     private int idade, id;
     private double peso, altura;
 
-    public ConsultasDTO() {
+    public ConsultasEntity() {
     }
 
     public int getId() {

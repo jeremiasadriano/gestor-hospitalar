@@ -6,9 +6,9 @@ package paginas;
 import dao.AgendaDAO;
 import dao.ConsultasDAO;
 import dao.PacienteVacinaDAO;
-import dto.AgendaDTO;
-import dto.ConsultasDTO;
-import dto.PacienteVacinaDTO;
+import entity.AgendaEntity;
+import entity.ConsultasEntity;
+import entity.PacienteVacinaEntity;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -241,9 +241,9 @@ public class DadosPacientesPage extends JFrame {
         tabelaModeloPaciente.setColumnIdentifiers(colunas);
 
         try {
-            List<PacienteVacinaDTO> objPacienteVacinaDTOs = (List<PacienteVacinaDTO>) new PacienteVacinaDAO().verTodos();
+            List<PacienteVacinaEntity> objPacienteVacinaDTOs = (List<PacienteVacinaEntity>) new PacienteVacinaDAO().verTodos();
 
-            for (PacienteVacinaDTO pacientes : objPacienteVacinaDTOs) {
+            for (PacienteVacinaEntity pacientes : objPacienteVacinaDTOs) {
                 Object[] linhas = {
                     pacientes.getId(),
                     pacientes.getNome(),
@@ -590,9 +590,9 @@ public class DadosPacientesPage extends JFrame {
         tabelaModeloConsulta.setColumnIdentifiers(colunas);
 
         try {
-            List<ConsultasDTO> objConsultasDTOs = (List<ConsultasDTO>) new ConsultasDAO().verTodos();
+            List<ConsultasEntity> objConsultasDTOs = (List<ConsultasEntity>) new ConsultasDAO().verTodos();
 
-            for (ConsultasDTO consultas : objConsultasDTOs) {
+            for (ConsultasEntity consultas : objConsultasDTOs) {
                 Object[] linhas = {
                     consultas.getId(),
                     consultas.getNome(),
@@ -692,9 +692,9 @@ public class DadosPacientesPage extends JFrame {
         tabelaModeloAgenda.setColumnIdentifiers(colunas);
 
         try {
-            List<AgendaDTO> objAgendaDTOs = (List<AgendaDTO>) new AgendaDAO().verTodos();
+            List<AgendaEntity> objAgendaDTOs = (List<AgendaEntity>) new AgendaDAO().verTodos();
 
-            for (AgendaDTO agendas : objAgendaDTOs) {
+            for (AgendaEntity agendas : objAgendaDTOs) {
                 Object[] linhas = {
                     agendas.getId(),
                     agendas.getNome(),
@@ -702,7 +702,7 @@ public class DadosPacientesPage extends JFrame {
                     agendas.getGenero(),
                     agendas.getTelefone(),
                     agendas.getDataConsulta(),
-                    agendas.getData_nascimento(),
+                    agendas.getDataNascimento(),
                     agendas.getEmail(),
                     agendas.getEndereco(),
                     agendas.getProvincia(),

@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dto;
+package entity;
 
 /**
  *
  * @author godal
  */
-public class AgendaDTO {
+public class AgendaEntity {
 
-    private String nome, sobrenome, dataConsulta, genero, data_nascimento, endereco, provincia, atendimentoCheckBox, idPlano, feedBackAtendimento, telefone, email, planoSaude;
+    private String nome, sobrenome, dataConsulta, genero, dataNascimento, endereco, provincia, atendimentoCheckBox, idPlano, feedBackAtendimento, telefone, email, planoSaude;
     private int id;
 
-    public AgendaDTO() {
+    public AgendaEntity() {
     }
 
     public String getEmail() {
@@ -72,12 +72,12 @@ public class AgendaDTO {
         this.genero = genero;
     }
 
-    public String getData_nascimento() {
-        return data_nascimento;
+    public String getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setData_nascimento(String data_nascimento) {
-        this.data_nascimento = data_nascimento;
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public String getEndereco() {

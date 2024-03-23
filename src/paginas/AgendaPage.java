@@ -8,7 +8,7 @@ package paginas;
  * @author godalway
  */
 import dao.AgendaDAO;
-import dto.AgendaDTO;
+import entity.AgendaEntity;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -512,12 +512,12 @@ public class AgendaPage extends JFrame {
     }
 
     private void registrar() {
-        AgendaDTO objAgendaDTO = new AgendaDTO();
+        AgendaEntity objAgendaDTO = new AgendaEntity();
 
         objAgendaDTO.setNome(NomeCompleto.getText());
         objAgendaDTO.setSobrenome(Sobrenome.getText());
         objAgendaDTO.setTelefone(Number.getText());
-        objAgendaDTO.setData_nascimento(Date.getText());
+        objAgendaDTO.setDataNascimento(Date.getText());
         objAgendaDTO.setEmail(emai.getText());
         objAgendaDTO.setEndereco(enderecoField.getText());
         objAgendaDTO.setPlanoSaude(Plano.getText());

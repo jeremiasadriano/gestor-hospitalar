@@ -2,19 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dto;
+package entity;
 
 /**
  *
  * @author godal
  */
-public class PacienteVacinaDTO {
+public class PacienteVacinaEntity {
 //    DTO DATA ACESS OBJECT
 
     private String nome, sobrenome, identificao, dataNascimento, genero, email, provincia, planoSaude, endereco, telefone, numeroPlano;
     private int id;
 
-    public PacienteVacinaDTO() {
+    public PacienteVacinaEntity() {
     }
 
     public int getId() {
