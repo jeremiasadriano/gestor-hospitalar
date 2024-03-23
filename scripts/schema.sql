@@ -1,52 +1,61 @@
 CREATE TABLE IF NOT EXISTS Agenda_TABLE(
-    id INT AUTO_INCREMENT,
-    nome VARCHAR(255),
-    sobrenome VARCHAR(255),
-    telefone VARCHAR(255),
-    data VARCHAR(255),
-    data_nascimento VARCHAR(255),
-    endereco VARCHAR(255),
-    provincia VARCHAR(255),
-    atendido VARCHAR(255),
-    numeroId VARCHAR(255),
-    experiencia VARCHAR(255),
-    email VARCHAR(255),
-    planoSaude VARCHAR(255)
+    nome            VARCHAR(255) NOT NULL,
+    sobrenome       VARCHAR(255) NOT NULL,
+    `data`          VARCHAR(255) NOT NULL,
+    genero          VARCHAR(255) NOT NULL,
+    data_nascimento VARCHAR(255) NOT NULL,
+    endereco        VARCHAR(255) NOT NULL,
+    provincia       VARCHAR(255) NOT NULL,
+    atendido        VARCHAR(120) NOT NULL,
+    numeroId        VARCHAR(25)  NOT NULL,
+    id              INT AUTO_INCREMENT,
+    telefone        VARCHAR(25)  NOT NULL,
+    experiencia     VARCHAR(255) NOT NULL,
+    email           VARCHAR(255) NOT NULL,
+    planoSaude      VARCHAR(255) NOT NULL,
+    CONSTRAINT Agenda_TABLE_pk
+        UNIQUE (email)
 );
 
-CREATE TABLE IF NOT EXISTS Consultas_TABLE(
-    id INT AUTO_INCREMENT,
-    nome VARCHAR(255),
-    sobrenome VARCHAR(255),
-    email VARCHAR(255),
-    peso VARCHAR(255),
-    idade VARCHAR(255),
-    metas VARCHAR(255),
-    objetivos VARCHAR(255),
-    altura VARCHAR(255),
-    dataC VARCHAR(255)
+create TABLE Consultas_TABLE(
+    nome      VARCHAR(255) NOT NULL,
+    sobrenome VARCHAR(255) NOT NULL,
+    email     VARCHAR(255) null,
+    peso      double       NOT NULL,
+    idade     INT          NOT NULL,
+    metas     VARCHAR(255) null,
+    objetivos VARCHAR(255) null,
+    id        INT AUTO_INCREMENT,
+    altura    double       NOT NULL,
+    dataC     VARCHAR(180) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS Funcionario_TABLE(
-    id INT AUTO_INCREMENT,
-    nome_func VARCHAR(255),
-    senha_func VARCHAR(255)
+create TABLE Funcionario_TABLE(
+    nome_func  VARCHAR(255) NOT NULL,
+    senha_func VARCHAR(255) NOT NULL,
+    idade_func INT          NOT NULL,
+    email_func VARCHAR(255) NOT NULL,
+    id_func    INT AUTO_INCREMENT 
 );
 
-CREATE TABLE IF NOT EXISTS Vacinacao_TABLE(
-    id INT AUTO_INCREMENT,
-    nome_pac VARCHAR(255),
-    sobrenome_pac VARCHAR(255),
-    identificao_pac VARCHAR(255),
-    dataNascimento_pac VARCHAR(255),
-    genero_pac VARCHAR(255),
-    email_pac VARCHAR(255),
-    provincia_pac VARCHAR(255),
-    planoSaude_pac VARCHAR(255),
-    numeroPlano_pac VARCHAR(255),
-    endereco VARCHAR(255),
-    telefone_pac VARCHAR(255)
-    );
+create TABLE Vacinacao_TABLE(
+    id                 INT AUTO_INCREMENT,
+    nome_pac           VARCHAR(255) NOT NULL,
+    sobrenome_pac      VARCHAR(255) NOT NULL,
+    identificao_pac    VARCHAR(255) NOT NULL,
+    dataNascimento_pac VARCHAR(180) NOT NULL,
+    genero_pac         VARCHAR(50)  NOT NULL,
+    email_pac          VARCHAR(225) NOT NULL,
+    provincia_pac      VARCHAR(255) NOT NULL,
+    planoSaude_pac     VARCHAR(225) null,
+    numeroPlano_pac    VARCHAR(120) null,
+    endereco           VARCHAR(180) NOT NULL,
+    telefone_pac       VARCHAR(15)  NOT NULL,
+    CONSTRAINT Vacinacao_TABLE_pk2
+        UNIQUE (identificao_pac),
+    CONSTRAINT Vacinacao_TABLE_pk3
+        UNIQUE (email_pac)
+);
 
 ALTER TABLE Agenda_TABLE
 ADD CONSTRAINT PK_AGENDA PRIMARY KEY (id);
